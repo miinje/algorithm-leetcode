@@ -4,11 +4,16 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    for (let i = 0; i < nums.length; i++) {
-        const targetNum = nums.indexOf(target - nums[i]);
+    const numsObject = {};
+    const result = [];
 
-        if (targetNum > -1 && targetNum !== i) {
-            return [i, targetNum];
+    for (let i = 0; i < nums.length; i++) {
+      const num = +(target - nums[i]);
+      
+      if (Object.hasOwn(numsObject, num)) {
+            return [i, numsObject[num]];
+        } else {
+            numsObject[nums[i]] = i;
         }
     }
 };
