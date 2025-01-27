@@ -5,7 +5,6 @@
  */
 var twoSum = function(nums, target) {
     const numsObject = {};
-    const result = [];
 
     for (let i = 0; i < nums.length; i++) {
       const num = +(target - nums[i]);
