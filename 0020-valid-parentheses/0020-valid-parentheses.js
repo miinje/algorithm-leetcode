@@ -3,12 +3,12 @@
  * @return {boolean}
  */
 var isValid = function(s) {
+    const stack = [];
     const brackets = {
         "[" : "]",
         "{" : "}",
         "(" : ")",
     }; 
-    const stack = [];
 
     if (s.length % 2 !== 0) {
         return false;
@@ -16,15 +16,15 @@ var isValid = function(s) {
 
     for (bracket of s) {
         if (Object.hasOwn(brackets, bracket)) {
-            stack.unshift(bracket);
+            stack.push(bracket);
         } else {
-            if (brackets[stack[0]] === bracket) {
-                stack.shift();
-            } else {
+            if (brackets[stack.pop()] !== bracket) {
                 return false;
             }
         }
     }
+
+
 
     if (stack.length === 0) {
         return true;
