@@ -3,18 +3,16 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    const magority = nums.length / 2;
-    const obj = {};
+    let count = 0;
+    let result = 0;
 
     for (const num of nums) {
-        if (obj[num]) {
-            obj[num] = obj[num] + 1;
-        } else {
-            obj[num] = 1;
+        if (count === 0) {
+            result = num;
         }
 
-        if (obj[num] >= magority) {
-            return num;
-        } 
+        count += num === result ? 1 : -1;
     }
+
+    return result;
 };
